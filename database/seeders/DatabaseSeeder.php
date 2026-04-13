@@ -15,6 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Buat user admin default
+        \App\Models\User::updateOrCreate(
+            ['email' => 'suadmin@example.tc'],
+            [
+                'name'     => 'Administrator',
+                'email'    => 'suadmin@example.tc',
+                'password' => bcrypt('password123'),
+                'role'     => 'admin',
+            ]
+        );
         $this->call([
             ActivityTypeSeeder::class,
             ChecklistTemplateSeeder::class,
